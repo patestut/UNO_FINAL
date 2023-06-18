@@ -1,11 +1,11 @@
-
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
 
 /**
+ * A class that represents an UNO game.
  *
- * @author Stuti Patel
+ * author Stuti Patel
  */
 public class UNOGame extends Game {
 
