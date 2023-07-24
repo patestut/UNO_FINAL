@@ -17,6 +17,7 @@ public class Main {
             String playerName = scanner.nextLine();
             playerNames.add(playerName);
         }
+        
 
         UNOGame unoGame = new UNOGame("UNO");
 
