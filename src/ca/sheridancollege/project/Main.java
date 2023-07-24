@@ -1,20 +1,31 @@
 package ca.sheridancollege.project;
 
-/**
- * This is the main class to run the game.
- * Add your name as an author and the date!
- *
- * author Stuti Patel
- */
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of players: ");
+        int numPlayers = scanner.nextInt();
+        scanner.nextLine(); 
+
+        ArrayList<String> playerNames = new ArrayList<>();
+        for (int i = 1; i <= numPlayers; i++) {
+            System.out.print("Enter Player " + i + "'s name: ");
+            String playerName = scanner.nextLine();
+            playerNames.add(playerName);
+        }
+
         UNOGame unoGame = new UNOGame("UNO");
 
-        // Add players to the game
-        unoGame.getPlayers().add(new UNOPlayer("Player 1"));
-        unoGame.getPlayers().add(new UNOPlayer("Player 2"));
+        for (String playerName : playerNames) {
+            unoGame.getPlayers().add(new UNOPlayer(playerName));
+        }
 
-        unoGame.play(); // Start the game
-        unoGame.declareWinner(); // Declare the winner
+        unoGame.play();
+        unoGame.declareWinner();
     }
 }
+

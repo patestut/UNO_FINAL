@@ -2,26 +2,25 @@ package ca.sheridancollege.project;
 
 import java.util.ArrayList;
 
-/**
- * A class that represents an UNO player.
- *
- * author Stuti Patel
- */
 public class UNOPlayer extends Player {
 
-    private ArrayList<Card> hand;
+    private ArrayList<UNOCard> hand;
 
     public UNOPlayer(String name) {
         super(name);
         hand = new ArrayList<>();
     }
 
-    public void drawCard(Card card) {
+    public void drawCard(UNOCard card) {
         hand.add(card);
+    }
+
+    public ArrayList<UNOCard> getHand() {
+        return hand;
     }
 
     @Override
     public void play() {
-        // Implement UNO gameplay logic here
+        
     }
 }
