@@ -18,7 +18,6 @@ public class Main {
             playerNames.add(playerName);
         }
         
-
         UNOGame unoGame = new UNOGame("UNO");
 
         for (String playerName : playerNames) {
