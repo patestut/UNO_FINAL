@@ -26,34 +26,31 @@ public class UNOPlayerTest {
         card2 = new UNOCard("Blue", "Draw Two");
     }
 
-    
     @Test
     public void testGoodInitialization() {
         assertNotNull(unoPlayer);
         assertNotNull(unoPlayer.getHand());
     }
 
-    
     @Test
     public void testGoodDrawCard() {
         unoPlayer.drawCard(card1);
         assertEquals(1, unoPlayer.getHand().size());
     }
 
-        @Test
+    @Test
     public void testBoundaryGetHand() {
         unoPlayer.drawCard(card1);
         unoPlayer.drawCard(card2);
         assertEquals(2, unoPlayer.getHand().size());
     }
 
-    
     @Test
     public void testBoundaryGetEmptyHand() {
         assertEquals(0, unoPlayer.getHand().size());
     }
 
-        @Test
+    @Test
     public void testBadDrawNullCard() {
         unoPlayer.drawCard(null);
         assertEquals(1, unoPlayer.getHand().size());
