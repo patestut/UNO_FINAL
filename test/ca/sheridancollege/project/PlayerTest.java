@@ -46,9 +46,7 @@ public class PlayerTest {
         player.play();
         
     }
-
-   
-
+    
     private static class UnoPlayer extends Player {
 
         public UnoPlayer(String name) {
