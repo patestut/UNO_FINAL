@@ -24,7 +24,6 @@ import org.junit.Test;
         assertEquals(null  , game.getName());
     }
 
-    
     @Test
     public void testGoodSetPlayers() {
         ArrayList<Player> players = new ArrayList<>();
@@ -51,14 +50,12 @@ import org.junit.Test;
         game.setPlayers(null);
     }
 
-   
-    @Test
+   @Test
     public void testBoundaryPlay() {
         game.play();
         
     }
 
-    
     @Test
     public void testBoundaryDeclareWinner() {
         game.declareWinner();
