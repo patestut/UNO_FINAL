@@ -31,12 +31,12 @@ public class UNOCardTest {
         assertEquals("5", unoCard.getValue());
     }
 
-        @Test
+    @Test
     public void testGoodToString() {
         assertEquals("Red 5", unoCard.toString());
     }
 
-        @Test
+    @Test
     public void testBoundaryGetScoreValue() {
         assertEquals(0, unoCard.getScoreValue());
     }
