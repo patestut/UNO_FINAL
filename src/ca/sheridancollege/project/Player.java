@@ -18,6 +18,5 @@ public abstract class Player {
     public abstract void play();
 
     void drawCard(UNOCard unoCard) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
