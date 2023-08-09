@@ -19,8 +19,7 @@ public class GroupOfCardsTest {
     public void setUp() {
         group = new GroupOfCards(52);
     }
-
-   
+    
     @Test
     public void testGoodGetSize() {
         assertEquals(52, group.getSize());
