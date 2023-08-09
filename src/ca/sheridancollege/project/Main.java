@@ -9,7 +9,7 @@ public class Main {
 
         System.out.print("Enter the number of players: ");
         int numPlayers = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         ArrayList<String> playerNames = new ArrayList<>();
         for (int i = 1; i <= numPlayers; i++) {
@@ -17,7 +17,7 @@ public class Main {
             String playerName = scanner.nextLine();
             playerNames.add(playerName);
         }
-        
+
         UNOGame unoGame = new UNOGame("UNO");
 
         for (String playerName : playerNames) {
@@ -28,4 +28,3 @@ public class Main {
         unoGame.declareWinner();
     }
 }
-

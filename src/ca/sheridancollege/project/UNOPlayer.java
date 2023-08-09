@@ -3,7 +3,6 @@ package ca.sheridancollege.project;
 import java.util.ArrayList;
 
 public class UNOPlayer extends Player {
-
     private ArrayList<UNOCard> hand;
 
     public UNOPlayer(String name) {
@@ -21,6 +20,6 @@ public class UNOPlayer extends Player {
 
     @Override
     public void play() {
-        
+
     }
 }

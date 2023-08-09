@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GroupOfCards {
-
     private ArrayList<Card> cards;
     private int size;
 

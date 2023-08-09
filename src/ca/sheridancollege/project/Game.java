@@ -3,7 +3,6 @@ package ca.sheridancollege.project;
 import java.util.ArrayList;
 
 public abstract class Game {
-
     private final String name;
     private ArrayList<Player> players;
 

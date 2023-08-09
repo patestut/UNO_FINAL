@@ -6,10 +6,10 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class UNOGame extends Game {
-
     private GroupOfCards deck;
     private ArrayList<UNOCard> discardPile;
     private String currentColor;
+    private boolean skipNextTurn = false;
 
     public UNOGame(String name) {
         super(name);
@@ -28,6 +28,7 @@ public class UNOGame extends Game {
                 if (!gameEnd) {
                     System.out.println("\n" + player.getName() + "'s turn!");
                     playerTurn((UNOPlayer) player);
+                    handleSkippedTurn((UNOPlayer) player);
                     gameEnd = checkGameEnd((UNOPlayer) player);
                 }
             }
@@ -99,7 +100,6 @@ public class UNOGame extends Game {
                     validMove = true;
                 } else {
                     System.out.println("Deck is empty. Cannot draw a card.");
-                   
                 }
             } else if (choice >= 1 && choice <= player.getHand().size()) {
                 UNOCard cardToPlay = player.getHand().get(choice - 1);
@@ -109,12 +109,69 @@ public class UNOGame extends Game {
                     discardPile.add(cardToPlay);
                     currentColor = cardToPlay.getColor();
                     validMove = true;
+
+                    // Handle special cards
+                    if (cardToPlay.getValue().equals("Skip")) {
+                        // Skip the next turn
+                        skipNextTurn = true;
+                    } else if (cardToPlay.getValue().equals("Draw Two")) {
+                        // Next player must draw two cards and skip their turn
+                        int currentPlayerIndex = getPlayers().indexOf(player);
+                        int nextPlayerIndex = (currentPlayerIndex + 1) % getPlayers().size();
+                        UNOPlayer nextPlayer = (UNOPlayer) getPlayers().get(nextPlayerIndex);
+                        System.out.println(nextPlayer.getName() + " must draw two cards and skip their turn!");
+
+                        // Draw two cards
+                        for (int i = 0; i < 2; i++) {
+                            if (deck.getCards().size() > 0) {
+                                nextPlayer.drawCard((UNOCard) deck.getCards().remove(0));
+                            } else {
+                                System.out.println("Deck is empty. Cannot draw a card.");
+                                break;
+                            }
+                        }
+                    } else if (cardToPlay.getValue().equals("Draw Four")) {
+                        // Next player must draw four cards and skip their turn
+                        int currentPlayerIndex = getPlayers().indexOf(player);
+                        int nextPlayerIndex = (currentPlayerIndex + 1) % getPlayers().size();
+                        UNOPlayer nextPlayer = (UNOPlayer) getPlayers().get(nextPlayerIndex);
+                        System.out.println(nextPlayer.getName() + " must draw four cards and skip their turn!");
+
+                        // Draw four cards
+                        for (int i = 0; i < 4; i++) {
+                            if (deck.getCards().size() > 0) {
+                                nextPlayer.drawCard((UNOCard) deck.getCards().remove(0));
+                            } else {
+                                System.out.println("Deck is empty. Cannot draw a card.");
+                                break;
+                            }
+                        }
+
+                        // Ask the player who played the Draw Four card to choose the next color
+                        scanner.nextLine(); // Consume the newline character left by nextInt()
+                        System.out.println("Choose the next color (Red, Green, Blue, Yellow): ");
+                        String newColor = scanner.nextLine();
+                        currentColor = newColor;
+
+                        discardPile.add(new UNOCard(newColor, "Draw Four"));
+                    }
                 } else {
                     System.out.println("Invalid move. Try again.");
                 }
             } else {
                 System.out.println("Invalid choice. Try again.");
             }
+        }
+    }
+
+    private void handleSkippedTurn(UNOPlayer currentPlayer) {
+        if (skipNextTurn) {
+            // Skip the next turn
+            int currentPlayerIndex = getPlayers().indexOf(currentPlayer);
+            int nextPlayerIndex = (currentPlayerIndex + 1) % getPlayers().size();
+            UNOPlayer nextPlayer = (UNOPlayer) getPlayers().get(nextPlayerIndex);
+            System.out.println(nextPlayer.getName() + "'s turn is skipped!");
+            skipNextTurn = false; // Reset the skipNextTurn flag
         }
     }
 
@@ -134,3 +191,4 @@ public class UNOGame extends Game {
         return score;
     }
 }
+   
