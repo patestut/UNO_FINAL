@@ -4,22 +4,13 @@
  */
 package ca.sheridancollege.project;
 
-/*import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;*/
-
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GameTest {
+ public class GameTest {
 
     private Game game;
 
@@ -28,7 +19,7 @@ public class GameTest {
         game = new UnoGame("UNO");
     }
 
-        @Test
+    @Test
     public void testGoodGetName() {
         assertEquals(null  , game.getName());
     }
@@ -79,9 +70,6 @@ public class GameTest {
         public UnoGame(String name) {
             super(name);
         }
-
-       // public UnoGame(String uno) {
-        //}
 
         @Override
         public void play() {
