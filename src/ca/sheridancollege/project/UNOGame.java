@@ -78,7 +78,7 @@ public class UNOGame extends Game {
         currentColor = ((UNOCard) discardPile.get(0)).getColor();
     }
 
-    private void playerTurn(UNOPlayer player) {
+    void playerTurn(UNOPlayer player) {
         Scanner scanner = new Scanner(System.in);
         boolean validMove = false;
 
@@ -164,7 +164,7 @@ public class UNOGame extends Game {
         }
     }
 
-    private void handleSkippedTurn(UNOPlayer currentPlayer) {
+    void handleSkippedTurn(UNOPlayer currentPlayer) {
         if (skipNextTurn) {
             // Skip the next turn
             int currentPlayerIndex = getPlayers().indexOf(currentPlayer);
@@ -175,7 +175,7 @@ public class UNOGame extends Game {
         }
     }
 
-    private boolean checkGameEnd(UNOPlayer player) {
+    boolean checkGameEnd(UNOPlayer player) {
         if (player.getHand().isEmpty()) {
             System.out.println("\n" + player.getName() + " has no cards left. They win!");
             return true;
@@ -183,7 +183,7 @@ public class UNOGame extends Game {
         return false;
     }
 
-    private int calculateScore(UNOPlayer player) {
+    int calculateScore(UNOPlayer player) {
         int score = 0;
         for (UNOCard card : player.getHand()) {
             score += card.getScoreValue();
